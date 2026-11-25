@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "public/**/*", "use": "@vercel/static" }
+  ],
+  "rewrites": [
+    { "source": "/v2/t/:id", "destination": "/api/v2/t/[id].js?id=:id" },
+    { "source": "/v2/admin", "destination": "/public/v2/admin.html" },
+    { "source": "/v2/create-link", "destination": "/public/v2/create-link.html" },
+    { "source": "/v2/admin/api", "destination": "/api/v2/admin/index.js" },
+    { "source": "/admin", "destination": "/public/admin-new.html" },
+    { "source": "/t/:id", "destination": "/api/t/[id].js?id=:id" },
+    { "source": "/r/:id", "destination": "/api/r/[code].js?id=:id" },
+    { "source": "/api/track-phone", "destination": "/api/track-phone.js" },
+    { "source": "/api/tracker", "destination": "/api/tracker.js" },
+    { "source": "/api/create-link", "destination": "/api/create-link.js" },
+    { "source": "/api/admin/get-tracking-data", "destination": "/api/admin/get-tracking-data.js" },
+    { "source": "/api/r/:code", "destination": "/api/r/[code].js" },
+    { "source": "/api/t/:id", "destination": "/api/t/[id].js" },
+    { "source": "/api/v2/create-link", "destination": "/api/v2/create-link.js" },
+    { "source": "/api/v2/tracker", "destination": "/api/v2/tracker.js" },
+    { "source": "/api/v2/t/:id", "destination": "/api/v2/t/id.js" },
+    { "source": "/api/v2/admin/get-tracking-data", "destination": "/api/v2/admin/get-tracking-data.js" },
+    { "source": "/api/v2/admin/api", "destination": "/api/v2/admin/index.js" },
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/admin-old", "destination": "/public/admin.html" },
+    { "source": "/admin-new", "destination": "/public/admin-new.html" },
+    { "source": "/create-link", "destination": "/public/create-link.html" },
+    { "source": "/:path*", "destination": "/public/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
+      ]
+    }
+  ]
+} 
